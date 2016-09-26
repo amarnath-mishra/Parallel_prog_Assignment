@@ -7,8 +7,7 @@
 
 int main()
 {
-	 struct timeval begin, end2;
-    
+struct timeval begin, end2;    
 
     int n,h,i;
     printf("Enter n = 2*k\n");
