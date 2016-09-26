@@ -33,7 +33,8 @@ int main()
   
 	 for(i=1;i<t1;i++)
 	    {
-		scanf("%d",&arr1[i]);
+		//scanf("%d",&arr1[i]);
+		arr1[i] = rand()%100;
 	
 	    }	
 gettimeofday(&begin, NULL);
@@ -105,7 +106,7 @@ printf("\n sum is \n");
 
 	for(i=1;i<=n;i++)
 	    {
-		printf("%d  ",arr3[0][i]);
+		//printf("%d  ",arr3[0][i]);
 	    }
 	
 

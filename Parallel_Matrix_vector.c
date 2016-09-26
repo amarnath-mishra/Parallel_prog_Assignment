@@ -2,8 +2,8 @@
 #include<stdlib.h>
 #include <omp.h>
 
-void Input_Vector(int *vec1,int num_col)
-{
+void Input_Vector(int *vec1,int mat_col)
+{	int i,j;
 	for(i=0; i<mat_col; i++)
 		vec1[i]=rand()%10;
 	printf("input vector to be multiplied -> \n");
@@ -15,6 +15,7 @@ void Input_Vector(int *vec1,int num_col)
 
 void Input_Matrix(int **arr1,int mat_rows,int mat_col)
 {
+int i,j;
 for(i=0; i<mat_rows; i++)
         {
         arr1[i]=(int*)malloc(mat_col*sizeof(int));
@@ -54,12 +55,12 @@ main()
         
 
     int *vec1= (int*) malloc((mat_col)*sizeof(int));        //vec1 is the Vector array to be multiplied in our original array
-    
+    Input_Vector(vec1,mat_col);
 
     int *output=(int*)calloc((mat_rows),sizeof(int));   //output array is array in which multiplication result is stored.
 
-
-
+ struct timeval begin, end2;
+gettimeofday(&begin, NULL);
 
 #pragma omp parallel shared(vec1, arr1)
 {
@@ -73,6 +74,10 @@ main()
     }
 }
 
+gettimeofday(&end2, NULL);
+double elapsed = (end2.tv_sec - begin.tv_sec) +
+              ((end2.tv_usec - begin.tv_usec)/1000000.0);
+              printf("\n get time gave took %f seconds to execute \n", elapsed);
 printf("\n\nResult of  Multiplication -\n\n");
 
         for(j=0; j<mat_rows; j++)
